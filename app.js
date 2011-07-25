@@ -37,9 +37,18 @@ app.get('/', function(req, res){
   });
 });
 
-// Model
-var model = require('./model');
-model.simpleCrud();
-
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+
+// Model
+require('./model/index');
+
+var myColor = new Color();
+    myColor.title = 'hello guys';
+    myColor.save(function(error){
+        if (!error) {
+            console.log('hello guys has been wrote');
+        } else {
+            console.log(error);
+        }
+    });
